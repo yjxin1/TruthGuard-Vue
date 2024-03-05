@@ -115,7 +115,7 @@ function toLogout() {
   store.logout();
   router.push('/')
 }
-//数据
+//数据，你好
 
 //方法
 
