@@ -75,7 +75,7 @@ function showArticle(id: number | null) {
     margin: 15px;
 }
 .content{
-    width: 500px;height: auto;
+    width: 800px;height: auto;
 }
 ul{
     list-style-type: none;

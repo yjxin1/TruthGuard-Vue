@@ -27,7 +27,7 @@
                         :maxlength="1000" :rows="5"></el-input>
                 </el-form-item>
             </el-form>
-            <div style="display: flex; justify-content: center;">
+            <div >
                 <el-text style="margin: 10px;font-weight: bold;font-size: 20px;">辟谣正文</el-text>
             </div>
             <div id="tiny"></div>
@@ -41,8 +41,8 @@
         <div class="right" style="float: right;">
             <el-text style="font-weight: bold;font-size: 20px;">微博热搜榜单</el-text>
             <tr v-for="h in hotList">
-                <td>{{ h.rank }}</td>
-                <td><a v-if="h.link" :href="h.link" target="_blank">{{ h.topic }}</a><span>{{ h.label }}</span></td>
+                <td>{{ h.rank }}.&nbsp;</td>
+                <td><a v-if="h.link" :href="h.link" target="_blank">{{ h.topic }}</a>&nbsp;<span style="font-size: 12px;color:#999;">{{ h.label }}</span></td>
             </tr>
         </div>
     </div>
@@ -132,6 +132,7 @@ async function showHot() {
     let result = await weiboApi.listHot();
     if (result.data.code == 1) {
         hotList.value = result.data.data;
+        console.log(hotList.value)
     }
 }
 async function submitArticle() {
@@ -174,7 +175,7 @@ async function submitArticle() {
     border: 2px solid rgba(0, 0, 0, 0.355);
     padding: 20px 20px;
     margin: 20px 20px;
-    width: 700px;
+    width: 900px;
     float: left;
     /* text-align: center; */
 }
