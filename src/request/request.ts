@@ -2,10 +2,8 @@ import axios from 'axios'
 import { useInfoStore } from '@/store';
 import { ElMessage } from 'element-plus';
 import {globals} from "@/main";
-// const serverUrl = globals.$config?.serverUrl||'http://localhost:5173'
 const store = useInfoStore();
 var service = axios.create({
-    // baseURL:serverUrl,
     timeout: 5000
 })
 
