@@ -3,7 +3,8 @@
   <div id="reader">
     <div class="container">
       <div class="top">
-        <el-menu router mode="horizontal" :default-active="$route.path">
+        <el-menu router mode="horizontal" :default-active="$route.path" active-text-color="#826516"
+         >
           <el-menu-item :index="`/${$route.path.split('/')[1]}/reader/homeReader`">首页</el-menu-item>
           <el-menu-item :index="`/${$route.path.split('/')[1]}/reader/seek`">查证</el-menu-item>
           <el-menu-item :index="`/${$route.path.split('/')[1]}/reader/submitClue`">提交线索</el-menu-item>

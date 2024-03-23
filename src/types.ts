@@ -51,7 +51,7 @@ export interface Article {
     label:string|null;
   }
   //定义questionRecord
-export interface questionRecord{
+export interface QuestionRecord{
   id:number|null,
   userId:number|null,
   goodNum:number|null,

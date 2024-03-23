@@ -22,7 +22,7 @@
     <el-space wrap size="default">
       <el-card shadow="hover" v-for="c in clueList" :key="c.id" @click="detail(c)" :body-style="{ padding: '0px' }"
         style="width:350px;height: 150px;">
-        <div style="padding: 15px;border: 1px solid rgba(43, 42, 38, 0.53);">
+        <div style="padding: 10px;">
           <el-row class="ellipsis-text">
             {{ c.title }}
             <span style="font-size: 11px;color: #999;">{{ c.submitTime }}</span>
@@ -41,7 +41,7 @@
     <!-- end -->
     <!-- 分页 -->
     <div class="demo-pagination-block" style="margin:10px 10px;">
-      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[10, 20, 30]"
+      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[9, 18, 27]"
         :small="true" :disabled="false" :background="false" layout="total, sizes, prev, pager, next, jumper"
         :total="total" @size-change="showData" @current-change="showData" />
     </div>
@@ -85,7 +85,7 @@ const clue = ref<Clue>({
 const drawer = ref(false)
 const clueList = ref<Clue[]>([])
 const currentPage = ref(1)  //当前页
-const pageSize = ref(10)  //页大小
+const pageSize = ref(9)  //页大小
 const total = ref(0) //返回查询结果总数
 const searchCondition = ref({  //搜索条件
   title: '',
@@ -148,6 +148,9 @@ function empty() {
 </script>
 
 <style scoped>
+.el-space{
+  margin-left: 45px;
+}
 .mb-1 .el-text {
   margin-right: 10px;
   margin-bottom: 10px;

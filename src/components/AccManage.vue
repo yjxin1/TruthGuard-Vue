@@ -19,7 +19,8 @@
 
     <!-- 第二栏 -->
     <el-row class="mb-2">
-      <el-popconfirm confirm-button-text="是" cancel-button-text="否" title="确认删除" @confirm="deleteSelectedUser" @cancel="">
+      <el-popconfirm confirm-button-text="是" cancel-button-text="否" title="确认删除" @confirm="deleteSelectedUser"
+        @cancel="">
         <template #reference>
           <el-button type="danger">批量删除</el-button>
         </template>
@@ -29,41 +30,43 @@
     <!-- end第二栏 -->
 
     <!-- 数据表格 -->
-    <el-table :data="userList" stripe  style="width:100%" @selection-change="handleSelectionChange">
-      <el-table-column type="selection"></el-table-column>
-      <el-table-column label="ID" v-if="false">
-        <template #default="scope">
-          <div style="display: flex; align-items: center">
-            <span style="margin-left: 10px">{{ scope.row.id }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="昵称" prop="nick"></el-table-column>
-      <el-table-column label="电话号" prop="phone"></el-table-column>
-      <el-table-column label="密码" prop="password"></el-table-column>
-      <el-table-column label="性别">
-        <template #default="scope">
-          <span v-if="scope.row.gender === 1">男</span>
-          <span v-else-if="scope.row.gender === 2">女</span>
-          <span v-else>未知</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="年龄" prop="age"></el-table-column>
-      <el-table-column label="账户类型">
-        <template #default="scope">
-          <span v-if="scope.row.type === 1">读者</span>
-          <span v-else-if="scope.row.type === 2">核查员</span>
-          <span v-if="scope.row.type === 3">管理员</span>
-        </template>
-      </el-table-column>
+    <div style="margin:0 20px;">
+      <el-table :data="userList" stripe style="width:100%" @selection-change="handleSelectionChange">
+        <el-table-column type="selection"></el-table-column>
+        <el-table-column label="ID" v-if="false">
+          <template #default="scope">
+            <div style="display: flex; align-items: center">
+              <span style="margin-left: 10px">{{ scope.row.id }}</span>
+            </div>
+          </template>
+        </el-table-column>
+        <el-table-column label="昵称" prop="nick"></el-table-column>
+        <el-table-column label="电话号" prop="phone"></el-table-column>
+        <el-table-column label="密码" prop="password"></el-table-column>
+        <el-table-column label="性别">
+          <template #default="scope">
+            <span v-if="scope.row.gender === 1">男</span>
+            <span v-else-if="scope.row.gender === 2">女</span>
+            <span v-else>未知</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="年龄" prop="age"></el-table-column>
+        <el-table-column label="账户类型">
+          <template #default="scope">
+            <span v-if="scope.row.type === 1">读者</span>
+            <span v-else-if="scope.row.type === 2">核查员</span>
+            <span v-if="scope.row.type === 3">管理员</span>
+          </template>
+        </el-table-column>
 
-      <el-table-column label="操作">
-        <template #default="scope">
-          <el-button size="small" type="primary" @click=" editUser(scope.$index, scope.row)">编辑</el-button>
-          <el-button v-if="0" size="small" type="danger" @click=" deleteUser(scope.$index, scope.row)">删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+        <el-table-column label="操作">
+          <template #default="scope">
+            <el-button size="small" type="primary" @click=" editUser(scope.$index, scope.row)">编辑</el-button>
+            <el-button v-if="0" size="small" type="danger" @click=" deleteUser(scope.$index, scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
     <!-- end数据表格 -->
 
     <!-- 分页 -->
@@ -184,15 +187,6 @@ const searchCondition = ref({  //搜索条件
 onBeforeMount(showData)
 async function showData() {
   console.log("条件查询", searchCondition.value)
-  // let result = await axios.get('/api/user/page', {
-  //   params: {
-  //     page: currentPage.value,
-  //     pageSize: pageSize.value,
-  //     nick: searchCondition.value.nick,
-  //     phone: searchCondition.value.phone,
-  //     type: searchCondition.value.type,
-  //   }
-  // })
   const params = {
     page: currentPage.value,
     pageSize: pageSize.value,

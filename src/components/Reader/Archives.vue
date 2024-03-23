@@ -1,15 +1,17 @@
 <!-- 档案展示 -->
 <template>
     <div>
-        <div class="container">
+
+        <div class="container" ref="tagsContainer">
             <h1 style="color: rgba(224, 175, 16, 0.742);font-size: 20px;font-weight: bold;">档案：标签</h1>
-            <span class="tag" v-for="(tag, index) in tagList" :key="index" @click="handleTagClick(tag)">
-                {{ tag }}
-            </span>
+            <div class="mb">
+                <span class="tag" v-for="(tag, index) in tagList" :key="index" @click="handleTagClick(tag)">{{ tag }}
+                </span>
+            </div>
         </div>
-        <el-drawer v-model="drawer" >
+        <el-drawer v-model="drawer">
             <template #header>
-                <h2>为你找到以下结果：</h2>
+                <h2>带标签【{{ tagName }}】的文章：</h2>
             </template>
             <ul>
                 <li v-for="a, index in articleList" @click="showArticle(a.id)">
@@ -31,6 +33,8 @@ const router = useRouter();
 const tagList = ref<string[]>([]); //标签列表数据
 const articleList = ref<Article[]>([])  //文章列表
 const drawer = ref(false)
+const tagName = ref("")
+const tagsContainer = ref(null); // 添加 ref
 
 //方法
 onMounted(() => {
@@ -42,10 +46,12 @@ async function getData() {
     let result = await articleApi.getAllTag()
     if (result.data.code === 1) {
         tagList.value = result.data.data;
+        tagList.value = tagList.value.slice().sort((a, b) => a.localeCompare(b, 'zh'));  //由拼音首字母进行排序
     }
 }
 //点击tag获取带有tag的文章
 async function handleTagClick(tag: string) {
+    tagName.value = tag
     console.log('Clicked tag:', tag);
     drawer.value = true  //展示抽屉
     let result = await articleApi.showArticleByTag(tag)
@@ -61,6 +67,7 @@ function showArticle(id: number | null) {
     console.log("根据id查看文章,id为:", id);
     router.push({ path: `/${router.currentRoute.value.path.split('/')[1]}/article`, query: { id: id } });
 }
+
 </script>
 
 <style scoped>
@@ -70,8 +77,9 @@ function showArticle(id: number | null) {
     padding: 15px 15px 15px 15px;
 }
 
+
 .tag {
-    width: 250px;
+    width: 150px;
     display: inline-block;
     font-size: 15px;
     font-weight: bold;
@@ -83,6 +91,10 @@ ul {
 }
 
 ul li:hover {
+    cursor: pointer;
+}
+
+span:hover {
     cursor: pointer;
 }
 </style>

@@ -8,7 +8,7 @@
       <el-form-item label="手机">
         <label>{{ userInfo.phone }}</label>
       </el-form-item>
-      <el-form-item label="密码">
+      <el-form-item label="密码" v-if="0">
         <label>{{ userInfo.password }}</label>
       </el-form-item>
       <el-form-item label="性别">

@@ -171,6 +171,7 @@ async function submitArticle() {
 </script>
 
 <style scoped>
+
 .container {
     border: 2px solid rgba(0, 0, 0, 0.355);
     padding: 20px 20px;

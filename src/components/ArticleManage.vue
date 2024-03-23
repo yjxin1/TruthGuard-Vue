@@ -36,7 +36,7 @@
     <el-space wrap size="default">
       <el-card shadow="hover" v-for="a in articleList" :key="a.id" :body-style="{ padding: '0px' }"
         style="width:350px;height: 180px;">
-        <div style="padding: 15px; border: 1px solid rgba(43, 42, 38, 0.53);">
+        <div style="padding: 15px;">
           <span class="ellipsis-text">{{ a.title }}</span>
           <div style="font-size: 11px;color: #999;">
             <span>发布时间：{{ a.publishTime }}</span><br>
@@ -73,7 +73,7 @@
 
     <!-- 分页 -->
     <div class="demo-pagination-block" style="margin:10px 10px;">
-      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[10, 20, 30]"
+      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[9, 18, 27]"
         :small="true" :disabled="false" :background="false" layout="total, sizes, prev, pager, next, jumper"
         :total="total" @size-change="showData" @current-change="showData" />
     </div>
@@ -92,7 +92,7 @@ import articleApi from '@/request/api/articleApi'
 //数据
 const urlId = ref('')   //爬取较真文章的urlId，测试用
 const currentPage = ref(1)  //当前页
-const pageSize = ref(10)  //页大小
+const pageSize = ref(9)  //页大小
 const total = ref(0) //返回查询结果总数
 const articleList = ref<Article[]>([])  //文章列表
 const time = ref('')
@@ -197,6 +197,9 @@ async function crawlJZ() {
 
 
 <style scoped>
+.el-space{
+  margin-left: 40px;
+}
 .mb-1 .el-text {
   margin-right: 10px;
   margin-bottom: 10px;
@@ -237,7 +240,7 @@ async function crawlJZ() {
 
 a {
   color: inherit;
-  text-decoration: none;
+  /* text-decoration: none; */
   /* 去除下划线 */
 }
 </style>

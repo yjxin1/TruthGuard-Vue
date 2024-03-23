@@ -3,13 +3,13 @@
     <div>
         <!-- 今日辟谣 -->
         <div class="part">
-            <h1 style="margin: 10px;">近一周资讯&nbsp;（{{ currentDate.getFullYear() }}年{{ currentDate.getMonth() + 1 }}月{{
+            <h1 style="margin: 10px;font-weight: bold;color: rgba(224, 175, 16, 0.53);font-size: 20px;">最近资讯&nbsp;（{{ currentDate.getFullYear() }}年{{ currentDate.getMonth() + 1 }}月{{
                 currentDate.getDate() }}日）</h1>
             <div class="content" >
                 <ul>
                     <li v-for="a in articleList" @click="showArticle(a.id)">
                         {{ a.title }} &nbsp;&nbsp;
-                        <span style="font-size: 12px;color: #999;">{{ a.publishTime }}</span>
+                        <span style="font-size: 14px;color: #999;">{{ a.publishTime }}</span>
                     </li>
                 </ul>
             </div>
@@ -52,8 +52,8 @@ async function showData() {
         pageSize: 10,
         // verificationLevel: 0,  //鉴定级别
         status: 1, //发布状态
-        begin: timeRange.value.begin.toISOString().split('T')[0],
-        end: timeRange.value.end.toISOString().split('T')[0],
+        // begin: timeRange.value.begin.toISOString().split('T')[0],
+        // end: timeRange.value.end.toISOString().split('T')[0],
     }
     let result = await articleApi.page(params)
     articleList.value = result.data.data.rows;
@@ -81,8 +81,9 @@ ul{
     list-style-type: none;
 }
 li{
-    margin:5px 5px 0 0;
+    margin:10px 10px 0 0;
 }
+
 ul li:hover {
   cursor: pointer;
 }

@@ -21,11 +21,11 @@
         <el-image class="image" :src="q.cover">
         </el-image>
         <div style="padding: 10px">
-          <span style="font-weight: bold;">嫌疑说法:</span><br>
+          <span style="font-weight: bold;">题目:</span><br>
           <span class="ellipsis-text">{{ q.questionText }}</span><br>
           <span style="font-weight: bold;">答案&nbsp;:&nbsp;</span>
           <span>{{ q.answer }}</span><br>
-          <span style="font-weight: bold;">答案来源&nbsp;:&nbsp;</span><br>
+          <span style="font-weight: bold;">来源&nbsp;:&nbsp;</span><br>
           <span class="ellipsis-text">{{ q.answerSource }}</span><br>
           <div class="bottom">
             <el-button text type="primary" class="button" @click="detail(q)">查看</el-button>
@@ -43,7 +43,7 @@
     <!-- end -->
     <!-- 分页 -->
     <div style="margin:10px 10px;">
-      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[10, 20, 30]"
+      <el-pagination v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[12, 24, 36]"
         :small="true" :disabled="false" :background="false" layout="total, sizes, prev, pager, next, jumper"
         :total="total" @size-change="showData" @current-change="showData" />
     </div>
@@ -145,7 +145,7 @@ const uploadRef = ref<UploadInstance>()
 const imageUrl = ref('');  //el-upload会返回临时的上传的图片的URL,用于在客户端显示上传的图片
 const formLabelWidth = '100px' //消息提示框的样式，不用管
 const currentPage = ref(1)  //当前页
-const pageSize = ref(10)  //页大小
+const pageSize = ref(12)  //页大小
 const total = ref(0) //返回查询结果总数
 const questionList = ref<Question[]>([])  //列表
 const question = ref<Question>({
@@ -305,6 +305,9 @@ async function editSure() {
 </script>
 
 <style scoped>
+.el-space{
+  margin-left: 45px;
+}
 .bottom {
   line-height: 12px;
   display: flex;

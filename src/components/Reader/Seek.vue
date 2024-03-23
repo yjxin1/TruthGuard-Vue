@@ -21,7 +21,7 @@
       <!-- end -->
       <!-- 数据展示这一栏 -->
       <div class="part">
-        <h1 style="margin: 10px;">为您找到以下结果：</h1>
+        <h1 style="margin: 10px;color:rgba(224, 175, 16, 0.53);font-size: 20px  ;">为您找到以下结果：</h1>
         <div class="content">
           <ul>
             <li v-for="a in articleList" @click="showArticle(a.id)">

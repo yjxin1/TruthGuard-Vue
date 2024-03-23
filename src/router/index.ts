@@ -103,6 +103,10 @@ const router = createRouter({
           path: 'article',
           component: () => import("@/components/Article.vue")
         },
+        {
+          path:'modelUse',
+          component:()=>import("@/components/ModelUse.vue")
+        }
       ]
     },
   ]

@@ -1,5 +1,5 @@
 import request from '@/request/request';
-import type { Question } from '@/types';
+import type { Question,QuestionRecord } from '@/types';
 
 const questionApi = {
     //分页查询
@@ -49,6 +49,8 @@ const questionApi = {
         // console.log(config)
         return request(config)
     },
+
+
     //答题记录相关API
     getRecord(userId:number){
         const config={
@@ -60,17 +62,17 @@ const questionApi = {
         }
         return request(config)
     },
-    deleteRecordByIds(questionRecord:any){
+    addRecord(questionRecord:Partial<QuestionRecord>){
         const config={
-            method:'delete',
+            method:'post',
             url:`/api/question/record`,
             data:questionRecord
         }
         return request(config)
     },
-    addRecord(ids:number[]){
+    deleteRecordByIds(ids:number[]){
         const config={
-            method:'post',
+            method:'delete',
             url:`/api/question/record/${ids.join(',')}`,
         }
         return request(config)

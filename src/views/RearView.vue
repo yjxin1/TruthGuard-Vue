@@ -28,7 +28,8 @@
           <el-aside>
             <el-row class="tac">
               <el-col>
-                <el-menu :default-openeds="['2']" class="el-menu-vertical-demo" router :default-active="$route.path">
+                <el-menu :default-openeds="['2']" class="el-menu-vertical-demo" router :default-active="$route.path"
+                  background-color="#888e93" text-color="#fff" active-text-color="#ffd04b">
                   <!-- index换成路由值 -->
                   <el-menu-item index='/rearView/reader'>
                     <el-icon>
@@ -37,7 +38,7 @@
                     用户界面
                   </el-menu-item>
                   <!-- 注意一下嵌套路由index的情况 -->
-                  <el-sub-menu index="2" v-if="store.userInfo.type===3">
+                  <el-sub-menu index="2" v-if="store.userInfo.type === 3">
                     <template #title>
                       <el-icon>
                         <Tools />
@@ -53,7 +54,7 @@
                     <el-menu-item index="/rearView/questionManage">
                       3.题库管理
                     </el-menu-item>
-                    <el-menu-item>4.其他</el-menu-item>
+                    <el-menu-item v-if="0">4.其他</el-menu-item>
                   </el-sub-menu>
 
                   <el-menu-item index="/rearView/clueManage">
@@ -75,6 +76,10 @@
                       <Comment />
                     </el-icon>
                     新建文章
+                  </el-menu-item>
+                  <el-menu-item index="/rearView/modelUse">
+                    <el-icon><Management /></el-icon>
+                    模型预测
                   </el-menu-item>
                 </el-menu>
               </el-col>
@@ -99,7 +104,7 @@
 
 <script lang='ts' setup>
 import { ref, reactive, toRefs, onBeforeMount, onMounted, computed } from 'vue'
-import { Menu, CaretBottom, Tools, Promotion, Comment, List } from '@element-plus/icons-vue'
+import { Menu, CaretBottom, Tools, Promotion, Comment, List,Management} from '@element-plus/icons-vue'
 import { useInfoStore } from "@/store"
 import router from '@/router';
 // import {useRoute} from 'vue-router'
@@ -143,8 +148,8 @@ function toLogout() {
 }
 
 .el-aside {
+  background-color:#888e93;
   width: 200px;
-  padding: 10px;
   margin-left: 0;
   top: 45px;
   position: fixed;
@@ -154,12 +159,11 @@ function toLogout() {
 .content {
   flex: 1;
   display: flex;
-  margin-left: 190px;
+  margin-left: 200px;
   margin-top: 45px;
 }
 
 .el-main {
-  flex: 1;
   padding: 10px;
 }
 
