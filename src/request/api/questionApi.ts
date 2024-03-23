@@ -46,7 +46,33 @@ const questionApi = {
                 questionCover:cover
             }
         }
-        console.log(config)
+        // console.log(config)
+        return request(config)
+    },
+    //答题记录相关API
+    getRecord(userId:number){
+        const config={
+            method:'get',
+            url:`/api/question/record`,
+            params:{
+                userId:userId
+            }
+        }
+        return request(config)
+    },
+    deleteRecordByIds(questionRecord:any){
+        const config={
+            method:'delete',
+            url:`/api/question/record`,
+            data:questionRecord
+        }
+        return request(config)
+    },
+    addRecord(ids:number[]){
+        const config={
+            method:'post',
+            url:`/api/question/record/${ids.join(',')}`,
+        }
         return request(config)
     },
 

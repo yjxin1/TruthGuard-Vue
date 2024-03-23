@@ -1,3 +1,4 @@
+
 // 定义 Article 接口
 export interface Article {
   id: number | null;
@@ -49,3 +50,11 @@ export interface Article {
     timestamp:Date|null,
     label:string|null;
   }
+  //定义questionRecord
+export interface questionRecord{
+  id:number|null,
+  userId:number|null,
+  goodNum:number|null,
+  questionNum:number|null,
+  updateTime:Date|null,
+}
