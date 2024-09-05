@@ -1,5 +1,5 @@
 # 相关技术
-- 基础框架：vue3+elementPlus
+- 基础框架：Vue3+ElementPlus
 - 状态管理：pinia
 - 路由组件：vue-router
 - 网络请求：axios
